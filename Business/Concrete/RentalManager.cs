@@ -5,6 +5,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -18,14 +19,9 @@ namespace Business.Concrete
         }
         public IResult Add(Rental rental)
         {
-            var carResult = this.GetAllByCarId(rental.CarId).Data;
-            if (carResult.Count != 0)
+            if (!isDevilered(rental))
             {
-                var lastRent = carResult[(carResult.Count) - 1];
-                if (lastRent.ReturnDate == default)
-                {
-                    return new ErrorResult(Messages.CarUndelivered);
-                }
+                return new ErrorResult(Messages.CarUndelivered);
             }
             _rentalDal.Add(rental);
             return new SuccessResult();
@@ -62,6 +58,15 @@ namespace Business.Concrete
         {
             _rentalDal.Update(rental);
             return new SuccessResult();
+        }
+
+        public bool isDevilered(Rental rental)
+        {
+            var result = this.GetAllByCarId(rental.CarId).Data.LastOrDefault();
+
+            return result == null || result.ReturnDate != default
+                ? true
+                : false;
         }
     }
 }

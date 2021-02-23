@@ -18,7 +18,7 @@ namespace ConsoleIU
         {
             //addUsers();
             //addCustomers();
-            var x = _rentalManager.Add(new Rental { CustomerId = "1", CarId = 1, RentDate=DateTime.Now});
+            var x = _rentalManager.Add(new Rental { CustomerId = "1", CarId = 2, RentDate=DateTime.Now});
             Console.WriteLine(x.Success);
         }
 
