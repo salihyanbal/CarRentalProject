@@ -18,19 +18,17 @@ namespace ConsoleIU
         {
             //addUsers();
             //addCustomers();
-            var x = _rentalManager.Add(new Rental { CustomerId = "1", CarId = 2, RentDate=DateTime.Now});
-            Console.WriteLine(x.Success);
+            addCustomers();
         }
 
         private static void addCustomers()
         {
-            _customerManager.Add(new Customer { CustomerId = "1", UserId = 1, CompanyName = "Akgündüzler" });
+            _customerManager.Add(new Customer { CustomerId = "1", UserId = 1, CompanyName = "Gündüzler" });
             _customerManager.Add(new Customer { CustomerId = "2", UserId = 2, CompanyName = "Kahraman" });
             _customerManager.Add(new Customer { CustomerId = "3", UserId = 3, CompanyName = "Yesiltas" });
             _customerManager.Add(new Customer { CustomerId = "4", UserId = 4, CompanyName = "Kazan" });
             _customerManager.Add(new Customer { CustomerId = "5", UserId = 5, CompanyName = "Ses" });
-            _customerManager.Add(new Customer { CustomerId = "6", UserId = 6, CompanyName = "Guzel" });
-            _customerManager.Add(new Customer { CustomerId = "7", UserId = 7, CompanyName = "Sevilen" });
+            _customerManager.Add(new Customer { CustomerId = "6", UserId = 6, CompanyName = "Gündüzler" });
         }
 
         private static void addUsers()

@@ -27,6 +27,7 @@ namespace DataAccess.Concrete.Ef
                                  ColorName = co.Name,
                                  DailyPrice = ca.DailyPrice
                              };
+                Console.WriteLine(result.Count());
                 return result.ToList();
 
             }

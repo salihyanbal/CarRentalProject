@@ -19,7 +19,7 @@ namespace Business.Concrete
         }
         public IResult Add(Rental rental)
         {
-            if (!isDevilered(rental))
+            if (!(this.IsDelivered(rental).Success))
             {
                 return new ErrorResult(Messages.CarUndelivered);
             }
@@ -60,13 +60,12 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        public bool isDevilered(Rental rental)
+        public IResult IsDelivered(Rental rental)
         {
             var result = this.GetAllByCarId(rental.CarId).Data.LastOrDefault();
-
-            return result == null || result.ReturnDate != default
-                ? true
-                : false;
+            if (result == null || result.ReturnDate != default)
+                return new SuccessResult();
+            return new ErrorResult();
         }
     }
 }
