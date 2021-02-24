@@ -17,18 +17,17 @@ namespace ConsoleIU
         static void Main(string[] args)
         {
             //addUsers();
-            //addCustomers();
             addCustomers();
         }
 
         private static void addCustomers()
         {
-            _customerManager.Add(new Customer { CustomerId = "1", UserId = 1, CompanyName = "Gündüzler" });
-            _customerManager.Add(new Customer { CustomerId = "2", UserId = 2, CompanyName = "Kahraman" });
-            _customerManager.Add(new Customer { CustomerId = "3", UserId = 3, CompanyName = "Yesiltas" });
-            _customerManager.Add(new Customer { CustomerId = "4", UserId = 4, CompanyName = "Kazan" });
-            _customerManager.Add(new Customer { CustomerId = "5", UserId = 5, CompanyName = "Ses" });
-            _customerManager.Add(new Customer { CustomerId = "6", UserId = 6, CompanyName = "Gündüzler" });
+            _customerManager.Add(new Customer { UserId = 1, CompanyName = "Gündüzler" });
+            _customerManager.Add(new Customer { UserId = 2, CompanyName = "Kahraman" });
+            _customerManager.Add(new Customer { UserId = 3, CompanyName = "Yesiltas" });
+            _customerManager.Add(new Customer { UserId = 4, CompanyName = "Kazan" });
+            _customerManager.Add(new Customer { UserId = 5, CompanyName = "Ses" });
+            _customerManager.Add(new Customer { UserId = 6, CompanyName = "Gündüzler" });
         }
 
         private static void addUsers()

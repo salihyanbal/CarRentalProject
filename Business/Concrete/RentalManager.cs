@@ -66,6 +66,12 @@ namespace Business.Concrete
             if (result == null || result.ReturnDate != default)
                 return new SuccessResult();
             return new ErrorResult();
+
+            //var result = _rentalDal.GetAll(r=> r.CarId == rental.CarId && r.ReturnDate==null);
+            //if (result.Count == 0)
+            //    return new SuccessResult();
+            //return new ErrorResult();
+
         }
     }
 }
