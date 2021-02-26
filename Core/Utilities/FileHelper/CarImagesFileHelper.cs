@@ -27,7 +27,7 @@ namespace Core.Utilities.Business.FileManager
                 imagePath = path + "\\" + newGUID;
                 fileStream.Flush();
             }
-            return imagePath;
+            return @imagePath;
         }
 
         public static void Update(IFormFile file, string OldPath)

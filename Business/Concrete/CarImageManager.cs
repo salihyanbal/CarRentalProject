@@ -72,7 +72,6 @@ namespace Business.Concrete
             return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.Id == id));
         }
 
-        [ValidationAspect(typeof(CarImageValidator))]
         public IResult Update(CarImage carImage,IFormFile file)
         {
             IResult result = BusinessRules.Run(
