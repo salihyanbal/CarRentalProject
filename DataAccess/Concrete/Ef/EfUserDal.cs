@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.Ef
 {
-    public class EfUserDal:EfEntityRepositoryBase<User,RecapContext>,IUserDal
+    public class EfUserDal:EfEntityRepositoryBase<User,CarRentalContext>,IUserDal
     {
     }
 }

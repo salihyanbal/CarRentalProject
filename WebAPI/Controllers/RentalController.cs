@@ -75,7 +75,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getallbycustomerid")]
-        public IActionResult GetAllByCustomerId(string customerId)
+        public IActionResult GetAllByCustomerId(int customerId)
         {
             var result = _rentalService.GetAllByCustomerId(customerId);
             if (result.Success)

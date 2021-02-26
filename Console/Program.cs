@@ -17,7 +17,12 @@ namespace ConsoleIU
         static void Main(string[] args)
         {
             //addUsers();
-            addCustomers();
+            //addCustomers();
+            //_rentalManager.Add(new Rental { CarId=1,CustomerId=1,RentDate=DateTime.Now,ReturnDate=DateTime.Now});
+            //foreach (var item in _rentalManager.GetAll().Data)
+            //{
+            //    Console.WriteLine(item.ReturnDate);
+            //}
         }
 
         private static void addCustomers()
