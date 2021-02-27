@@ -56,7 +56,10 @@ namespace WebAPI.Controllers
         [HttpPost("add")]
         public IActionResult Add([FromForm] CarImage carImage, [FromForm] IFormFile file)
         {
-
+            if (file == null)
+            {
+                return BadRequest("Boş resim gönderemezsin");
+            }
             IResult result = _carImageService.Add(carImage,file);
             if (result.Success)
             {
