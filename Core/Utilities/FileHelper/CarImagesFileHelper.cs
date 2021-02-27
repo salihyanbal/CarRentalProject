@@ -14,8 +14,8 @@ namespace Core.Utilities.Business.FileManager
         {
             string extension = Path.GetExtension(file.FileName).ToUpper();
             string newGUID = CreateGuid() + extension;
-            
-            var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName + @"\Images");
+            var directory  = Directory.GetCurrentDirectory() + "\\wwwroot";
+            var path = directory + @"\Images";
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
@@ -27,22 +27,24 @@ namespace Core.Utilities.Business.FileManager
                 imagePath = path + "\\" + newGUID;
                 fileStream.Flush();
             }
-            return @imagePath;
+            return imagePath.Replace("\\","/");
         }
 
         public static void Update(IFormFile file, string OldPath)
         {
             string extension = Path.GetExtension(file.FileName).ToUpper();
-            using (FileStream fileStream = File.Open(OldPath,FileMode.Open))
+            using (FileStream fileStream = File.Open(OldPath.Replace("/", "\\"),FileMode.Open))
             {
                 file.CopyToAsync(fileStream);
                 fileStream.Flush();
             }
         }
 
-        public static void Delete(string Path)
+        public static void Delete(string ImagePath)
         {
-            File.Delete(Path);
+            if(File.Exists(ImagePath.Replace("/", "\\")) && Path.GetFileName(ImagePath)!="default.png"){
+                File.Delete(ImagePath.Replace("/", "\\"));
+            }
         }
 
         public static string CreateGuid()
