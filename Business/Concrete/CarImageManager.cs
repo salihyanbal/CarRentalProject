@@ -23,6 +23,7 @@ namespace Business.Concrete
         {
             _carImageDal = carImageDal;
         }
+
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(CarImage carImage,IFormFile file)
         {
@@ -111,7 +112,7 @@ namespace Business.Concrete
 
         private List<CarImage> CheckIfCarHaveNoImage(int carId)
         {
-            string path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName + @"\Images\default.png");
+            string path = Directory.GetCurrentDirectory() + @"\wwwroot\Images\default.png"; //Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName + @"\Images\default.png");
             var result = _carImageDal.GetAll(c => c.CarId == carId);
             if (!result.Any())
                 return new List<CarImage>{new CarImage { CarId = carId, ImagePath = path }};

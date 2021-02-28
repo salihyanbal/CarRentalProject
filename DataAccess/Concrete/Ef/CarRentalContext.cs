@@ -10,7 +10,7 @@ namespace DataAccess.Concrete.Ef
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=ReCapProject;Trusted_Connection=true");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CarRentalProject;Trusted_Connection=true");
         }
 
         public DbSet<Car> Cars { get; set; }

@@ -13,7 +13,7 @@ namespace Core.Utilities.Business.FileManager
         public static string Add(IFormFile file)
         {
             string extension = Path.GetExtension(file.FileName).ToUpper();
-            string newGUID = CreateGuid() + extension;
+            string newGUID = CreateGuid() + extension; // 218382138213-27.02.2021.jpg
             var directory  = Directory.GetCurrentDirectory() + "\\wwwroot";
             var path = directory + @"\Images";
             if (!Directory.Exists(path))
@@ -27,7 +27,7 @@ namespace Core.Utilities.Business.FileManager
                 imagePath = path + "\\" + newGUID;
                 fileStream.Flush();
             }
-            return imagePath.Replace("\\","/");
+            return imagePath.Replace("\\", "/");
         }
 
         public static void Update(IFormFile file, string OldPath)
