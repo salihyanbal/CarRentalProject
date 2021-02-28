@@ -58,6 +58,20 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        public IResult DeleteByCarId(int carId)
+        {
+            var result = _carImageDal.GetAll(c => c.CarId == carId);
+            if (result.Any())
+            {
+                foreach (var carImage in result)
+                {
+                    Delete(carImage);
+                }
+                return new SuccessResult();
+            }
+            return new ErrorResult(Messages.CarHaveNoImage);
+        }
+
         public IDataResult<List<CarImage>> GetAll()
         {
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll());
@@ -88,7 +102,9 @@ namespace Business.Concrete
 
             carImage.Date = DateTime.Now;
             string OldPath = GetById(carImage.Id).Data.ImagePath;
-            CarImagesFileHelper.Update(file, OldPath);
+            
+            carImage.ImagePath = CarImagesFileHelper.Update(file, OldPath);
+            carImage.Date = DateTime.Now;
             _carImageDal.Update(carImage);
             return new SuccessResult();
         }
@@ -107,7 +123,6 @@ namespace Business.Concrete
             if (!isValidFileExtension)
                 return new ErrorResult(Messages.InvalidImageExtension);
             return new SuccessResult();
-
         }
 
         private List<CarImage> CheckIfCarHaveNoImage(int carId)

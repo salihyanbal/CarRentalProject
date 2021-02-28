@@ -93,5 +93,15 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpDelete("deletebycarid")]
+        public IActionResult DeleteByCarId(int carId)
+        {
+            IResult result = _carImageService.DeleteByCarId(carId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

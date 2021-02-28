@@ -13,7 +13,7 @@ namespace Core.Utilities.Business.FileManager
         public static string Add(IFormFile file)
         {
             string extension = Path.GetExtension(file.FileName).ToUpper();
-            string newGUID = CreateGuid() + extension; // 218382138213-27.02.2021.jpg
+            string newGUID = CreateGuid() + extension;
             var directory  = Directory.GetCurrentDirectory() + "\\wwwroot";
             var path = directory + @"\Images";
             if (!Directory.Exists(path))
@@ -28,16 +28,12 @@ namespace Core.Utilities.Business.FileManager
                 fileStream.Flush();
             }
             return imagePath.Replace("\\", "/");
-        }
+        } 
 
-        public static void Update(IFormFile file, string OldPath)
+        public static string Update(IFormFile file,string OldImagePath)
         {
-            string extension = Path.GetExtension(file.FileName).ToUpper();
-            using (FileStream fileStream = File.Open(OldPath.Replace("/", "\\"),FileMode.Open))
-            {
-                file.CopyToAsync(fileStream);
-                fileStream.Flush();
-            }
+            Delete(OldImagePath);
+            return Add(file);
         }
 
         public static void Delete(string ImagePath)
@@ -48,7 +44,7 @@ namespace Core.Utilities.Business.FileManager
         }
 
         public static string CreateGuid()
-        {
+        {  
             return Guid.NewGuid().ToString("N") + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day + "-" + DateTime.Now.Year;
         }
     }
