@@ -10,24 +10,22 @@ namespace Core.Utilities.Business.FileManager
 {
     public class CarImagesFileHelper
     {
+        static string directory = Directory.GetCurrentDirectory() + @"\wwwroot\";
+        static string path = @"Images\";
         public static string Add(IFormFile file)
         {
             string extension = Path.GetExtension(file.FileName).ToUpper();
-            string newGUID = CreateGuid() + extension;
-            var directory  = Directory.GetCurrentDirectory() + "\\wwwroot";
-            var path = directory + @"\Images";
-            if (!Directory.Exists(path))
+            string newFileName = Guid.NewGuid().ToString("N") + extension;
+            if (!Directory.Exists(directory))
             {
-                Directory.CreateDirectory(path);
+                Directory.CreateDirectory(directory);
             }
-            string imagePath;
-            using (FileStream fileStream = File.Create(path + "\\" + newGUID))
+            using (FileStream fileStream = File.Create(directory + path + newFileName))
             {
                 file.CopyToAsync(fileStream);
-                imagePath = path + "\\" + newGUID;
                 fileStream.Flush();
             }
-            return imagePath.Replace("\\", "/");
+            return (path + newFileName).Replace("\\","/");
         } 
 
         public static string Update(IFormFile file,string OldImagePath)
@@ -38,14 +36,11 @@ namespace Core.Utilities.Business.FileManager
 
         public static void Delete(string ImagePath)
         {
-            if(File.Exists(ImagePath.Replace("/", "\\")) && Path.GetFileName(ImagePath)!="default.png"){
-                File.Delete(ImagePath.Replace("/", "\\"));
+            bool x = File.Exists(directory + ImagePath.Replace("/", "\\"));
+            if ( x && Path.GetFileName(ImagePath)!="default.png"){
+                File.Delete(directory + ImagePath.Replace("/", "\\"));
             }
         }
 
-        public static string CreateGuid()
-        {  
-            return Guid.NewGuid().ToString("N") + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day + "-" + DateTime.Now.Year;
-        }
     }
 }
