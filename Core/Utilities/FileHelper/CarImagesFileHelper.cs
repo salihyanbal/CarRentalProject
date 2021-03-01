@@ -36,8 +36,7 @@ namespace Core.Utilities.Business.FileManager
 
         public static void Delete(string ImagePath)
         {
-            bool x = File.Exists(directory + ImagePath.Replace("/", "\\"));
-            if ( x && Path.GetFileName(ImagePath)!="default.png"){
+            if (File.Exists(directory + ImagePath.Replace("/", "\\")) && Path.GetFileName(ImagePath)!="default.png"){
                 File.Delete(directory + ImagePath.Replace("/", "\\"));
             }
         }
