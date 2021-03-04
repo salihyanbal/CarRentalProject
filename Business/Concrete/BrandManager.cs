@@ -6,6 +6,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace Business.Concrete
 {
@@ -17,6 +18,8 @@ namespace Business.Concrete
         {
             _brandDal = brandDal;
         }
+
+
         public IResult Add(Brand brand)
         {
             _brandDal.Add(brand);

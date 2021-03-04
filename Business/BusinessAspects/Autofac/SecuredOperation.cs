@@ -5,9 +5,9 @@ using System.Text;
 using Microsoft.AspNetCore.Http;
 using Castle.DynamicProxy;
 using Microsoft.Extensions.DependencyInjection;
-using Core.IoC;
 using Core.Extensions;
 using Business.Constants;
+using Core.Utilities.IoC;
 
 namespace Business.BusinessAspects.Autofac
 {
