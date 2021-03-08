@@ -1,10 +1,6 @@
-﻿using Core.Utilities.Results;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Core.Utilities.Business.FileManager
 {
@@ -16,13 +12,13 @@ namespace Core.Utilities.Business.FileManager
         {
             string extension = Path.GetExtension(file.FileName).ToUpper();
             string newFileName = Guid.NewGuid().ToString("N") + extension;
-            if (!Directory.Exists(directory))
+            if (!Directory.Exists(directory + path))
             {
-                Directory.CreateDirectory(directory);
+                Directory.CreateDirectory(directory + path);
             }
             using (FileStream fileStream = File.Create(directory + path + newFileName))
             {
-                file.CopyToAsync(fileStream);
+                file.CopyTo(fileStream);
                 fileStream.Flush();
             }
             return (path + newFileName).Replace("\\","/");
