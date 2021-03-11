@@ -45,12 +45,17 @@ namespace DataAccess.Concrete.InMemory
             return _cars;
         }
 
+        public List<CarDetailDto> GetAllCarDetails()
+        {
+            throw new NotImplementedException();
+        }
+
         public Car GetById(int id)
         {
             return _cars.SingleOrDefault(p=> p.Id == id);
         }
 
-        public List<CarDetailsDto> GetCarDetails()
+        public List<CarDetailDto> GetCarDetails()
         {
             throw new NotImplementedException();
         }

@@ -10,14 +10,14 @@ namespace DataAccess.Concrete.Ef
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, CarRentalContext>, ICarDal
     {
-        public List<CarDetailsDto> GetCarDetails()
+        public List<CarDetailDto> GetAllCarDetails()
         {
             using (CarRentalContext context = new CarRentalContext())
             {
                 var result = from ca in context.Cars
                              join co in context.Color on ca.ColorId equals co.Id
                              join br in context.Brand on ca.BrandId equals br.Id
-                             select new CarDetailsDto
+                             select new CarDetailDto
                              {
                                  CarId = ca.Id,
                                  BrandName = br.Name,
