@@ -18,7 +18,7 @@ namespace DataAccess.Concrete.Ef
                 var result = from rent in context.Rentals
                              join car in context.Cars
                              on rent.CarId equals car.Id
-                             join brand in context.Brand
+                             join brand in context.Brands
                              on car.BrandId equals brand.Id
                              join customer in context.Customers
                              on rent.CustomerId equals customer.Id
@@ -34,9 +34,6 @@ namespace DataAccess.Concrete.Ef
                              };
                 return result.ToList();
             }
-            
-
-
         }
     }
 }

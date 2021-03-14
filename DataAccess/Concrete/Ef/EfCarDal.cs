@@ -5,26 +5,29 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace DataAccess.Concrete.Ef
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, CarRentalContext>, ICarDal
     {
-        public List<CarDetailDto> GetAllCarDetails()
+        public List<CarDetailDto> GetAllCarDetails(Expression<Func<Car, bool>> filter = null)
         {
             using (CarRentalContext context = new CarRentalContext())
             {
-                var result = from ca in context.Cars
-                             join co in context.Color on ca.ColorId equals co.Id
-                             join br in context.Brand on ca.BrandId equals br.Id
+
+                var result = from car in filter == null ? context.Cars : context.Cars.Where(filter)
+                             join color in context.Colors on car.ColorId equals color.Id
+                             join brand in context.Brands on car.BrandId equals brand.Id
                              select new CarDetailDto
                              {
-                                 CarId = ca.Id,
-                                 BrandName = br.Name,
-                                 ColorName = co.Name,
-                                 DailyPrice = ca.DailyPrice
+                                 CarId = car.Id,
+                                 BrandName = brand.Name,
+                                 CarName = car.CarName,
+                                 Description = car.Description,
+                                 ColorName = color.Name,
+                                 DailyPrice = car.DailyPrice
                              };
-                Console.WriteLine(result.Count());
                 return result.ToList();
 
             }
