@@ -100,10 +100,10 @@ namespace Business.Concrete
                 return result;
             }
 
-            CarImage OldData = GetById(carImage.Id).Data;
-            carImage.ImagePath = CarImagesFileHelper.Update(file, OldData.ImagePath);
+            CarImage oldCarImage = GetById(carImage.Id).Data;
+            carImage.ImagePath = CarImagesFileHelper.Update(file, oldCarImage.ImagePath);
             carImage.Date = DateTime.Now;
-            carImage.CarId = OldData.CarId;
+            carImage.CarId = oldCarImage.CarId;
             _carImageDal.Update(carImage);
             return new SuccessResult();
         }

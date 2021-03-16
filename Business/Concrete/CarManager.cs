@@ -8,8 +8,12 @@ using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 
 namespace Business.Concrete
@@ -82,9 +86,27 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails(c => c.ColorId == colorId));
         }
 
-        public IDataResult<List<CarDetailDto>> GetCarsDetails(int brandId, int colorId)
+        public IDataResult<List<CarDetailDto>> GetCarsDetails(FilterDto filterDto)
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails(c => c.BrandId == brandId && c.ColorId == colorId && c.BrandId == brandId ));
+            Expression propertyExp,someValue,containsMethodExp,combinedExp;
+            Expression<Func<Car, bool>> exp = c => true, oldExp;
+            MethodInfo method;
+            var parameterExp = Expression.Parameter(typeof(Car), "type");
+            foreach (PropertyInfo propertyInfo in filterDto.GetType().GetProperties())
+            {
+                if (propertyInfo.GetValue(filterDto,null) != null)
+                {
+                    oldExp = exp;
+                    propertyExp = Expression.Property(parameterExp, propertyInfo.Name);
+                    method = typeof(int).GetMethod("Equals", new[] { typeof(int) });
+                    someValue = Expression.Constant(filterDto.GetType().GetProperty(propertyInfo.Name).GetValue(filterDto, null), typeof(int));
+                    containsMethodExp = Expression.Call(propertyExp, method, someValue);
+                    exp = Expression.Lambda<Func<Car, bool>>(containsMethodExp, parameterExp);
+                    combinedExp = Expression.AndAlso(exp.Body,oldExp.Body);
+                    exp = Expression.Lambda<Func<Car, bool>>(combinedExp, exp.Parameters[0]);
+                }
+            }
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails(exp));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails(int carId)

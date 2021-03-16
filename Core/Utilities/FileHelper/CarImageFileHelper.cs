@@ -24,16 +24,17 @@ namespace Core.Utilities.Business.FileManager
             return (path + newFileName).Replace("\\","/");
         } 
 
-        public static string Update(IFormFile file,string OldImagePath)
+        public static string Update(IFormFile file,string oldImagePath)
         {
-            Delete(OldImagePath);
+            Delete(oldImagePath);
             return Add(file);
         }
 
-        public static void Delete(string ImagePath)
+        public static void Delete(string imagePath)
         {
-            if (File.Exists(directory + ImagePath.Replace("/", "\\")) && Path.GetFileName(ImagePath)!="default.png"){
-                File.Delete(directory + ImagePath.Replace("/", "\\"));
+            if (File.Exists(directory + imagePath.Replace("/", "\\")) 
+                && Path.GetFileName(imagePath)!="default.png"){
+                File.Delete(directory + imagePath.Replace("/", "\\"));
             }
         }
 
