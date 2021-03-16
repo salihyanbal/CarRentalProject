@@ -76,16 +76,6 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<List<CarDetailDto>> GetCarsDetailsByBrand(int brandId)
-        {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails(c=> c.BrandId == brandId));
-        }
-
-        public IDataResult<List<CarDetailDto>> GetCarsDetailsByColor(int colorId)
-        {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails(c => c.ColorId == colorId));
-        }
-
         public IDataResult<List<CarDetailDto>> GetCarsDetails(FilterDto filterDto)
         {
             Expression propertyExp,someValue,containsMethodExp,combinedExp;
@@ -107,11 +97,6 @@ namespace Business.Concrete
                 }
             }
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails(exp));
-        }
-
-        public IDataResult<List<CarDetailDto>> GetCarDetails(int carId)
-        {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetails(c => c.Id == carId));
         }
     }
 }
