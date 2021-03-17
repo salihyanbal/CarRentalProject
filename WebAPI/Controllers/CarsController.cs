@@ -99,7 +99,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getcarsdetails")]
-        public IActionResult GetCarsDetails([FromQuery]FilterDto filterDto)
+        public IActionResult GetCarsDetails([FromQuery]CarDetailFilterDto filterDto)
         {
             var result = _carService.GetCarsDetails(filterDto);
             if (result.Success)

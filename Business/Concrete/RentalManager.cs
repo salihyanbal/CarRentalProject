@@ -69,14 +69,9 @@ namespace Business.Concrete
                 return new SuccessResult();
             return new ErrorResult();
 
-            //var result = _rentalDal.GetAll(r=> r.CarId == rental.CarId && r.ReturnDate==null);
-            //if (result.Count == 0)
-            //    return new SuccessResult();
-            //return new ErrorResult();
-
         }
 
-        public IDataResult<List<RentalDetailDto>> GetAllRentalsDetails()
+        public IDataResult<List<RentalDetailDto>> GetRentalsDetails()
         {
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetAllRentalDetails());
         }
