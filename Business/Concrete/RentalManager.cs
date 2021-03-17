@@ -71,7 +71,7 @@ namespace Business.Concrete
 
         }
 
-        public IDataResult<List<RentalDetailDto>> GetRentalsDetails()
+        public IDataResult<List<RentalDetailDto>> GetAllRentalsDetails()
         {
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetAllRentalDetails());
         }
