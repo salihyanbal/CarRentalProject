@@ -91,7 +91,6 @@ namespace Business.Concrete
             //        exp = Expression.Lambda<Func<Car, bool>>(combinedExp, exp.Parameters[0]);
             //    }
             //}
-            Expression<Func<Car, bool>> exp = c => true, oldExp;
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetailsByFilter(filterDto));
         }
     }

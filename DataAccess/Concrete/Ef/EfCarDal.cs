@@ -28,7 +28,7 @@ namespace DataAccess.Concrete.Ef
                                  ColorName = color.Name,
                                  DailyPrice = car.DailyPrice
                              };
-                return result.ToList();
+                return result.ToList(); // tolist yapmadan query'e dönüştürüp verileri çekmez.
 
             }
         }

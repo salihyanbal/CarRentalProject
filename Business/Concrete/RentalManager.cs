@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -20,9 +21,11 @@ namespace Business.Concrete
         }
         public IResult Add(Rental rental)
         {
-            if (!(this.IsDelivered(rental).Success))
+            var result = BusinessRules.Run(
+                IsRentable(rental));
+            if (result != null)
             {
-                return new ErrorResult(Messages.CarUndelivered);
+                return result;
             }
             rental.RentDate = DateTime.Now;
             _rentalDal.Add(rental);
@@ -44,6 +47,11 @@ namespace Business.Concrete
         public IDataResult<List<Rental>> GetAllByCarId(int carId)
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.CarId == carId));
+        }
+
+        public IDataResult<Rental> GetLastByCarId(int carId)
+        {
+            return new SuccessDataResult<Rental>(_rentalDal.GetAll(r => r.CarId == carId).LastOrDefault());
         }
 
         public IDataResult<List<Rental>> GetAllByCustomerId(int customerId)
@@ -69,6 +77,16 @@ namespace Business.Concrete
                 return new SuccessResult();
             return new ErrorResult();
 
+        }
+
+        public IResult IsRentable(Rental rental)
+        {
+            var result = this.GetAllByCarId(rental.CarId).Data.LastOrDefault();
+            if(IsDelivered(rental).Success || (rental.RentStartDate > result.RentEndDate && rental.RentStartDate >= DateTime.Now))
+            {
+                return new SuccessResult();
+            }
+            return new ErrorResult();
         }
 
         public IDataResult<List<RentalDetailDto>> GetAllRentalsDetails()

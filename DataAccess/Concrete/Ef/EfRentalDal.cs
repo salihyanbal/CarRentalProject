@@ -30,6 +30,8 @@ namespace DataAccess.Concrete.Ef
                                  CarName = brand.Name + car.CarName,
                                  CustomerFullName = user.FirstName + user.LastName,
                                  RentDate = rent.RentDate,
+                                 RentStartDate = rent.RentStartDate,
+                                 RentEndDate = rent.RentEndDate,
                                  ReturnDate = rent.ReturnDate
                              };
                 return result.ToList();

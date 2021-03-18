@@ -14,8 +14,6 @@ namespace Entities.DTOs
         public int? ModelYear { get; set; }
         public int? Id { get; set; }
         public string CarName { get; set; }
-
-        public int ?MinModelYear { get; set; }
     }
 }
 
