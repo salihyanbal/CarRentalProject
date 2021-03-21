@@ -11,9 +11,9 @@ namespace Entities.DTOs
     {
         public int? BrandId { get; set; }
         public int? ColorId { get; set; }
-        public int? ModelYear { get; set; }
         public int? Id { get; set; }
         public string CarName { get; set; }
+         
     }
 }
 

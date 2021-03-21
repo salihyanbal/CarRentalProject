@@ -82,7 +82,11 @@ namespace Business.Concrete
         public IResult IsRentable(Rental rental)
         {
             var result = this.GetAllByCarId(rental.CarId).Data.LastOrDefault();
-            if(IsDelivered(rental).Success || (rental.RentStartDate > result.RentEndDate && rental.RentStartDate >= DateTime.Now))
+            if(IsDelivered(rental).Success || (
+                !(rental.RentStartDate < result.RentEndDate && rental.RentStartDate > result.RentStartDate) &&
+                !(rental.RentEndDate < result.RentEndDate && rental.RentEndDate > result.RentStartDate) &&
+                !(rental.RentStartDate < result.RentStartDate && rental.RentEndDate > result.RentEndDate) &&
+                 rental.RentStartDate >= DateTime.Now))
             {
                 return new SuccessResult();
             }

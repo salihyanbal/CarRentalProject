@@ -1,4 +1,5 @@
 ﻿using Core.DataAccess.EntityFramework;
+using Core.Extensions;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -15,8 +16,8 @@ namespace DataAccess.Concrete.Ef
         {
             using (CarRentalContext context = new CarRentalContext())
             {
-                var filterExpression = GetFilterExpression(filterDto);
-                var result = from car in filterExpression == null ? context.Cars: context.Cars.Where(filterExpression)
+                var filterExpression = filterDto.GetFilterExpression<Car>();
+                var result = from car in filterExpression == null ? context.Cars : context.Cars.Where(filterExpression)
                              join color in context.Colors on car.ColorId equals color.Id
                              join brand in context.Brands on car.BrandId equals brand.Id
                              select new CarDetailDto
@@ -27,7 +28,7 @@ namespace DataAccess.Concrete.Ef
                                  Description = car.Description,
                                  ColorName = color.Name,
                                  DailyPrice = car.DailyPrice
-                             };
+                             }; 
                 return result.ToList(); // tolist yapmadan query'e dönüştürüp verileri çekmez.
 
             }
