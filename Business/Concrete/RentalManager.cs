@@ -81,21 +81,24 @@ namespace Business.Concrete
 
         public IResult IsRentable(Rental rental)
         {
-            var result = this.GetAllByCarId(rental.CarId).Data.LastOrDefault();
-            if(IsDelivered(rental).Success || (
-                !(rental.RentStartDate < result.RentEndDate && rental.RentStartDate > result.RentStartDate) &&
-                !(rental.RentEndDate < result.RentEndDate && rental.RentEndDate > result.RentStartDate) &&
-                !(rental.RentStartDate < result.RentStartDate && rental.RentEndDate > result.RentEndDate) &&
-                 rental.RentStartDate >= DateTime.Now))
+            var result = this.GetAllByCarId(rental.CarId).Data;
+            foreach (var pastRental in result)
             {
-                return new SuccessResult();
+                if ((!IsDelivered(pastRental).Success) && 
+                    ((rental.RentStartDate < pastRental.RentEndDate && rental.RentStartDate > pastRental.RentStartDate) ||
+                    (rental.RentEndDate < pastRental.RentEndDate && rental.RentEndDate > pastRental.RentStartDate) ||
+                    (rental.RentStartDate < pastRental.RentStartDate && rental.RentEndDate > pastRental.RentEndDate))) 
+                {
+                    return new ErrorResult();
+                }
             }
-            return new ErrorResult();
+            return new SuccessResult();
         }
 
         public IDataResult<List<RentalDetailDto>> GetAllRentalsDetails()
         {
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetAllRentalDetails());
         }
+        
     }
 }

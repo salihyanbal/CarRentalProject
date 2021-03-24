@@ -27,7 +27,8 @@ namespace DataAccess.Concrete.Ef
                                  CarName = car.CarName,
                                  Description = car.Description,
                                  ColorName = color.Name,
-                                 DailyPrice = car.DailyPrice
+                                 DailyPrice = car.DailyPrice,
+                                 ModelYear = car.ModelYear
                              }; 
                 return result.ToList(); // tolist yapmadan query'e dönüştürüp verileri çekmez.
 

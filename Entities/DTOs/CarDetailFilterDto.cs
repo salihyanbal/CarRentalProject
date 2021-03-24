@@ -12,6 +12,7 @@ namespace Entities.DTOs
         public int? BrandId { get; set; }
         public int? ColorId { get; set; }
         public int? Id { get; set; }
+        public int? DailyPrice { get; set; }
         public string CarName { get; set; }
          
     }
