@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -25,6 +26,7 @@ namespace Business.Concrete
         }
 
         [ValidationAspect(typeof(CarImageValidator))]
+        [SecuredOperation("admin")]
         public IResult Add(CarImage carImage,IFormFile file)
         {
             IResult result = BusinessRules.Run(
@@ -43,6 +45,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        [SecuredOperation("admin")]
         public IResult Delete(CarImage carImage)
         {
             IResult result = BusinessRules.Run(
@@ -86,7 +89,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<CarImage>(_carImageDal.Get(c => c.Id == id));
         }
-
+        [SecuredOperation("admin")]
         public IResult Update(CarImage carImage,IFormFile file)
         {
             IResult result = BusinessRules.Run(

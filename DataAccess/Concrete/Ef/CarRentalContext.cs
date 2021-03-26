@@ -14,6 +14,10 @@ namespace DataAccess.Concrete.Ef
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CarRentalProject;Trusted_Connection=true");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CustomerCard>().HasKey(c => new { c.CustomerId, c.CardId });
+        }
         public DbSet<Car> Cars { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Color> Colors { get; set; }
@@ -24,6 +28,7 @@ namespace DataAccess.Concrete.Ef
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public DbSet<FakeCard> FakeCards { get; set; }
+        public DbSet<CustomerCard> CustomerCards { get; set; }
 
     }
 }

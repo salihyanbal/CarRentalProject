@@ -47,7 +47,10 @@ namespace Business.Concrete
 
         public IResult IsCardExist(FakeCard fakeCard)
         {
-            var result = _fakeCardDal.Get(c => c.NameOnTheCard == fakeCard.NameOnTheCard && c.CardNumber == fakeCard.CardNumber && c.CardCvv == fakeCard.CardCvv);
+            var result = _fakeCardDal.Get(c => c.NameOnTheCard == fakeCard.NameOnTheCard && 
+            c.CardNumber == fakeCard.CardNumber && 
+            c.CardCvv == fakeCard.CardCvv && 
+            c.expirationDate == fakeCard.expirationDate);
             if (result == null)
             {
                 return new ErrorResult();

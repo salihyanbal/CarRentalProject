@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("login")]
-        public ActionResult Login(UserForLoginDto userForLoginDto)
+        public IActionResult Login(UserForLoginDto userForLoginDto)
         {
             var userToLogin = _authService.Login(userForLoginDto);
             if (!userToLogin.Success)
@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("register")]
-        public ActionResult Register(UserForRegisterDto userForRegisterDto)
+        public IActionResult Register(UserForRegisterDto userForRegisterDto)
         {
             var userExists = _authService.UserExists(userForRegisterDto.Email);
             if (!userExists.Success)
@@ -55,6 +55,18 @@ namespace WebAPI.Controllers
             }
 
             return BadRequest(result.Message);
+        }
+
+        [HttpPut("changepassword")]
+        public IActionResult ChangePassword(ChangePasswordDto changePasswordDto)
+        {
+            var result = _authService.ChangePassword(changePasswordDto);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
         }
     }
 }

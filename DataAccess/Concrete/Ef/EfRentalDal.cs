@@ -21,7 +21,7 @@ namespace DataAccess.Concrete.Ef
                              join brand in context.Brands
                              on car.BrandId equals brand.Id
                              join customer in context.Customers
-                             on rent.CustomerId equals customer.Id
+                             on rent.UserId equals customer.UserId
                              join user in context.Users
                              on customer.UserId equals user.Id
                              select new RentalDetailDto

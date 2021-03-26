@@ -33,6 +33,8 @@ namespace Business.DependecyResolvers.Autofac
             builder.RegisterType<EfCarImageDal>().As<ICarImageDal>().SingleInstance();
             builder.RegisterType<FakeCardManager>().As<IFakeCardService>().SingleInstance();
             builder.RegisterType<EfFakeCardDal>().As<IFakeCardDal>().SingleInstance();
+            builder.RegisterType<CustomerCardManager>().As<ICustomerCardService>().SingleInstance();
+            builder.RegisterType<EfCustomerCardDal>().As<ICustomerCardDal>().SingleInstance();
 
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
