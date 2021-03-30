@@ -58,7 +58,7 @@ namespace Business.Concrete
         [CacheAspect]
         public IDataResult<List<Car>> GetCarsByBrand(int brandId)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.BrandId == brandId));
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => (p.BrandId) == brandId));
         }
         [CacheAspect]
         public IDataResult<List<Car>> GetCarsByColor(int colorId)
@@ -93,6 +93,7 @@ namespace Business.Concrete
             //        exp = Expression.Lambda<Func<Car, bool>>(combinedExp, exp.Parameters[0]);
             //    }
             //}
+
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetAllCarDetailsByFilter(filterDto));
         }
     }

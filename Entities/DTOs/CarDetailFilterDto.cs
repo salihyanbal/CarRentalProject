@@ -1,5 +1,6 @@
 ﻿using Core.Entities;
 using Core.Entities.Abstract;
+using Core.Utilities.Attributes.FilterAttributes;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,12 +10,21 @@ namespace Entities.DTOs
 {
     public class CarDetailFilterDto : IFilterDto
     {
-        public int? BrandId { get; set; }
-        public int? ColorId { get; set; }
-        public int? Id { get; set; }
-        public int? DailyPrice { get; set; }
+        [EqualFilter("BrandId")]
+        public List<int> BrandId { get; set; }
+        [EqualFilter("ColorId")]
+        public List<int> ColorId { get; set; }
+        [EqualFilter("Id")]
+        public List<int> Id { get; set; }
+        [EqualFilter("DailyPrice")]
+        public List<int> DailyPrice { get; set; }
         public string CarName { get; set; }
-         
+
+        [MinFilter("DailyPrice")]
+        public int? MinDailyPrice { get; set; }
+        [MaxFilter("DailyPrice")]
+        public int? MaxDailyPrice { get; set; }
+
     }
 }
 

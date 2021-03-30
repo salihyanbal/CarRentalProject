@@ -101,6 +101,7 @@ namespace WebAPI.Controllers
         [HttpGet("getcarsdetails")]
         public IActionResult GetCarsDetails([FromQuery]CarDetailFilterDto filterDto)
         {
+            var test = HttpContext.Request.Query["brandid"];
             var result = _carService.GetCarsDetails(filterDto);
             if (result.Success)
             {
