@@ -61,11 +61,11 @@ namespace Business.Concrete
             {
                 return new ErrorResult(Messages.UserNotFound);
             }
-            if (!HashingHelper.VerifyPasswordHash(changePasswordDto.oldPassword, userToCheck.PasswordHash, userToCheck.PasswordSalt))
+            if (!HashingHelper.VerifyPasswordHash(changePasswordDto.OldPassword, userToCheck.PasswordHash, userToCheck.PasswordSalt))
             {
                 return new ErrorResult(Messages.PasswordError);
             }
-            HashingHelper.CreatePasswordHash(changePasswordDto.newPassword, out passwordHash, out passwordSalt);
+            HashingHelper.CreatePasswordHash(changePasswordDto.NewPassword, out passwordHash, out passwordSalt);
             userToCheck.PasswordHash = passwordHash;
             userToCheck.PasswordSalt = passwordSalt;
             _userService.Update(userToCheck);

@@ -12,6 +12,6 @@ namespace Entities.Concrete
         public int UserId { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
-        public int FindeksScore { get; set; }
+        public int FindeksScore = 500;
     }
 }

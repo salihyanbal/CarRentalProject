@@ -30,7 +30,7 @@ namespace DataAccess.Concrete.Ef
                                  DailyPrice = car.DailyPrice,
                                  ModelYear = car.ModelYear
                              }; 
-                return result.ToList(); // tolist yapmadan query'e dönüştürüp verileri çekmez.
+                return result.ToList();
 
             }
         }
