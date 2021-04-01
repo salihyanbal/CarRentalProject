@@ -16,12 +16,14 @@
 - <a href="#nugetpackages">**Nuget Packages and Their Versions**</a>
 
 <div id="introduction">
+	
 # Introduction
 
 I have been developed this project to improve myself, learn design patterns and other technologies. If you need detailed information do not hesitate to contact me.
 </div>
 
 <div id="setup">
+	
 # Setup
   
 After downloading the files and opening the solution u need to do the required and optional configurations.
@@ -37,6 +39,7 @@ After downloading the files and opening the solution u need to do the required a
 </div>
 
 <div id="technologies">
+	
 # Technologies Used
 
 * .NET
@@ -49,6 +52,7 @@ After downloading the files and opening the solution u need to do the required a
 </div>
 
 <div id="techniques">
+	
 # Techniques
 
 * Layered Architecture Design Pattern
@@ -59,7 +63,8 @@ After downloading the files and opening the solution u need to do the required a
 </div>
 
 <div id="databasetables">
-# Databas Tables
+	
+# Database Tables
 
 ![DatabaseTables](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/sqltables.png)
 </div>
@@ -92,6 +97,7 @@ You can create custom FilterDto's and filtering methods for other entities by fo
 </div>
 
 <div id="fluentvalidation">
+	
 # FluentValidation and Usage
 
 If you want to check content of entity when add, update etc. operations you can create validation for related entity.
@@ -102,6 +108,7 @@ If you want to check content of entity when add, update etc. operations you can 
 </div>
 
 <div id="aspects">
+	
 # Aspects and Usages
   
 ## ValidationAspect
@@ -123,15 +130,16 @@ If you want to change the duration you just modify it as [CacheAspect(20)]. It w
 
 We need to clean cache when add, update, delete or any manipulative operations triggered because the data is changed. For that purpose, you can use the cache remove aspect by adding [CacheRemoveAspect("Servicename.Get")] on top of the related method. The name of the service, which is the interface of the related manager, must be given.
 
-![CacheRemoveAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/cache-remove-aspect.jpg)
+![CacheRemoveAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/cache-remove-aspect.jpg)
 
 ## PerformanceAspect
 
 If the processing time of the method is longer than expected this aspect writes it to debug screen.
 I added this aspect to all methods. You can check it from: Core > Utilites > Interceptors > AspectInterceptorSelector.cs. By default, I gave 60 seconds for the performance control.
 
-![PerformanceAspectAll](https://github.com/salihyanbal/CarRentalProject/blob/master/Github/images-for-read-me/performance-aspect-all.jpg)
-![PerformanceAspectMethod](https://github.com/salihyanbal/CarRentalProject/blob/master/Github/images-for-read-me/performance-aspect-method.jpg)
+![PerformanceAspectAll](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-meperformance-aspect-all.jpg)
+
+![PerformanceAspectMethod](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/performance-aspect-method.jpg)
 
 ## SecuredOperationAspect
 
@@ -144,6 +152,7 @@ You can secure the usages of operations by adding [SecuredOperation("role1,role2
 If an operation handles more than one transaction and other transactions need to withdrawal when one transaction failed, you can add [TransactionScopeAspect] on top of the related operation.
 
 ![TransactionScopeAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/Github/images-for-read-me/transaction-scope-aspect.jpg)
+
 </div>
 
 <div id="nugetpackages">
