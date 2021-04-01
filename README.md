@@ -5,15 +5,15 @@
 
 # Table of Contents
 
-- <a href="#introduction">**Introduction**</a>
-- <a href="#setup">**Setup**</a>
-- <a href="#technologies">**Technologies**</a>
-- <a href="#techniques">**Techniques**</a>
-- <a href="#databasetables">**Database Tables**</a>
-- <a href="#dynamicfilter">**Dynamic Filter and How to Create**</a>
-- <a href="#fluentvalidation">**FluentValidation and Usage**</a>
-- <a href="#aspects">**Aspects and Usages**</a>
-- <a href="#nugetpackages">**Nuget Packages and Their Versions**</a>
+- [**Introduction**](#introduction)
+- [**Setup**](#setup)
+- [**Technologies**](#technologies)
+- [**Techniques**](#techniques)
+- [**Introduction**](#introduction)
+- [**Dynamic Filter and How to Create**](#dynamicfilter)
+- [**FluentValidation and Usage**](#fluentvalidation)
+- [**Aspects and Usages**](#aspects)
+- [**Nuget Packages and Their Versions**](#nugetpackages)
 
 <div id="introduction">
 	
