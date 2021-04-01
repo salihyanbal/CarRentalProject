@@ -137,7 +137,7 @@ We need to clean cache when add, update, delete or any manipulative operations t
 If the processing time of the method is longer than expected this aspect writes it to debug screen.
 I added this aspect to all methods. You can check it from: Core > Utilites > Interceptors > AspectInterceptorSelector.cs. By default, I gave 60 seconds for the performance control.
 
-![PerformanceAspectAll](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-meperformance-aspect-all.jpg)
+![PerformanceAspectAll](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/performance-aspect-all.jpg)
 
 ![PerformanceAspectMethod](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/performance-aspect-method.jpg)
 
