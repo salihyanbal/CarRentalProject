@@ -32,7 +32,6 @@ namespace Business.Concrete
         [ValidationAspect(typeof(CarValidator))]
         [SecuredOperation("admin")]
         [CacheRemoveAspect("ICarService.Get")]
-        [PerformanceAspect(30)]
         public IResult Add(Car car)
         {
             _carDal.Add(car);
