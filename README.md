@@ -61,7 +61,7 @@ After downloading the files and opening the solution u need to do the required a
 <div id="databasetables">
 # Databas Tables
 
-[DatabaseTables](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/sqltables.png)
+![DatabaseTables](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/sqltables.png)
 </div>
 
 <div id="dynamicfilter">
@@ -73,11 +73,11 @@ If you want to add a filter for your entity, you can follow the steps below.
 
 1. Create FilterDto, implement the interface of IFilterDto, and add properties that will be used for filtering the entity. ([Example FilterDto](https://github.com/salihyanbal/CarRentalProject/blob/master/Entities/DTOs/CarDetailFilterDto.cs))
 
-[FilterDto](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/filter-dto.jpg)
+![FilterDto](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/filter-dto.jpg)
 
 2. Create a method in the related DAL and implement the Filter structure. ([Example usage of Filter Expression in the EfCarDal](https://github.com/salihyanbal/CarRentalProject/blob/master/DataAccess/Concrete/Ef/EfCarDal.cs))
 
-[FilterDal](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/dal-for-filter.jpg)
+![FilterDal](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/dal-for-filter.jpg)
 
 Filter Attributes Usage
 
@@ -96,7 +96,7 @@ You can create custom FilterDto's and filtering methods for other entities by fo
 
 If you want to check content of entity when add, update etc. operations you can create validation for related entity.
 
-[Fluent Validation](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/fluent-validation.jpg)
+![Fluent Validation](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/fluent-validation.jpg)
 
 
 </div>
@@ -110,40 +110,40 @@ Aspect for [FluentValidation](#fluentvalidation)
 
 You need to add [ValidationAspect(typeof(validationType))] on top of the related method.
 
-[ValidationAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/validation-aspect.jpg)
+![ValidationAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/validation-aspect.jpg)
 
 ## CacheAspect
 
 If you want to add the returned data to the cache, you need to add  [CacheAspect] on top of the related method, by default it adds the data to the cache for 60 minutes. 
 If you want to change the duration you just modify it as [CacheAspect(20)]. It will cache the returned data for 20 minutes.
 
-[CacheAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/cache-aspect.jpg)
+![CacheAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/cache-aspect.jpg)
 
 ## CacheRemoveAspect
 
 We need to clean cache when add, update, delete or any manipulative operations triggered because the data is changed. For that purpose, you can use the cache remove aspect by adding [CacheRemoveAspect("Servicename.Get")] on top of the related method. The name of the service, which is the interface of the related manager, must be given.
 
-[CacheRemoveAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/cache-remove-aspect.jpg)
+![CacheRemoveAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/cache-remove-aspect.jpg)
 
 ## PerformanceAspect
 
 If the processing time of the method is longer than expected this aspect writes it to debug screen.
 I added this aspect to all methods. You can check it from: Core > Utilites > Interceptors > AspectInterceptorSelector.cs. By default, I gave 60 seconds for the performance control.
 
-[PerformanceAspectAll](https://github.com/salihyanbal/CarRentalProject/blob/master/performance-aspect-all.jpg)
-[PerformanceAspectMethod](https://github.com/salihyanbal/CarRentalProject/blob/master/performance-aspect-method.jpg)
+![PerformanceAspectAll](https://github.com/salihyanbal/CarRentalProject/blob/master/performance-aspect-all.jpg)
+![PerformanceAspectMethod](https://github.com/salihyanbal/CarRentalProject/blob/master/performance-aspect-method.jpg)
 
 ## SecuredOperationAspect
 
 You can secure the usages of operations by adding [SecuredOperation("role1,role2")] on top of the related method.You should spare the roles just with a comma.
 
-[SecuredOperationAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/secured-operation-aspect.jpg)
+![SecuredOperationAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/secured-operation-aspect.jpg)
 
 ## TransactionAsepct
 
 If an operation handles more than one transaction and other transactions need to withdrawal when one transaction failed, you can add [TransactionScopeAspect] on top of the related operation.
 
-[TransactionScopeAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/transaction-scope-aspect.jpg)
+![TransactionScopeAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/transaction-scope-aspect.jpg)
 </div>
 
 <div id="nugetpackages">
