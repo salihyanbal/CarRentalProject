@@ -145,13 +145,13 @@ I added this aspect to all methods. You can check it from: Core > Utilites > Int
 
 You can secure the usages of operations by adding [SecuredOperation("role1,role2")] on top of the related method.You should spare the roles just with a comma.
 
-![SecuredOperationAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/Github/images-for-read-me/secured-operation-aspect.jpg)
+![SecuredOperationAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/secured-operation-aspect.jpg)
 
 ## TransactionAsepct
 
 If an operation handles more than one transaction and other transactions need to withdrawal when one transaction failed, you can add [TransactionScopeAspect] on top of the related operation.
 
-![TransactionScopeAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/Github/images-for-read-me/transaction-scope-aspect.jpg)
+![TransactionScopeAspect](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/transaction-scope-aspect.jpg)
 
 </div>
 
