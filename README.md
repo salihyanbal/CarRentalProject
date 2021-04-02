@@ -66,7 +66,7 @@ After downloading the files and opening the solution u need to do the required a
 	
 # Database Tables
 
-![DatabaseTables](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/database-tables.png)
+![DatabaseTables](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/database-tables.jpg)
 </div>
 
 <div id="dynamicfilter">
