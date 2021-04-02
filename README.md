@@ -29,7 +29,7 @@ I have been developed this project to improve myself, learn design patterns and 
 After downloading the files and opening the solution u need to do the required and optional configurations.
 
 - Required
-1. Creating sql tables (You can get sql query from: [.sql](https://github.com/salihyanbal/CarRentalProject/blob/master/carrental.sql))
+1. Creating sql tables (You can get sql query from: [.sql](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/carrental.sql))
 2. Configure connection string from: DataAccess > Concrete > Ef > [CarRentalContext.cs](https://github.com/salihyanbal/CarRentalProject/blob/master/DataAccess/Concrete/Ef/CarRentalContext.cs) (default configuration for Mssql) 
 - Replace the server name with yours.
 - Optional
@@ -66,7 +66,7 @@ After downloading the files and opening the solution u need to do the required a
 	
 # Database Tables
 
-![DatabaseTables](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/sqltables.png)
+![DatabaseTables](https://github.com/salihyanbal/CarRentalProject/blob/master/GitHub/images-for-read-me/database-tables.png)
 </div>
 
 <div id="dynamicfilter">
